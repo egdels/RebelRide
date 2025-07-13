@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/background_card">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:padding="@dimen/padding_large"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_medium"
+            android:background="@color/background_app">
+
+            <!-- Connection Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_large">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/connection"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_size_xlarge"
+                        android:textColor="@color/primary"
+                        android:layout_marginBottom="@dimen/margin_large"/>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_medium">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/editMac"
+                                android:hint="@string/mac_address_hint"
+                                android:inputType="text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:autofillHints="macAddress" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnScan"
+                            android:text="@string/scan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/margin_medium"
+                            android:gravity="center"
+                            android:layout_gravity="center_vertical"
+                            app:cornerRadius="@dimen/margin_medium" />
+                    </LinearLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_medium"
+                        app:passwordToggleEnabled="true"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editPass"
+                            android:hint="@string/password_hint"
+                            android:inputType="textPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:autofillHints="password" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Devices Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:cardUseCompatPadding="true"
+                android:layout_marginTop="@dimen/margin_medium">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_large">
+
+                    <TextView
+                        android:id="@+id/txtDevicesHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/devices_nearby"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_size_xlarge"
+                        android:textColor="@color/primary"
+                        android:layout_marginBottom="@dimen/margin_large"/>
+
+                    <ListView
+                        android:id="@+id/listDevices"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/list_height"
+                        android:background="@color/background_list"
+                        android:clipToPadding="false"
+                        android:divider="@color/divider"
+                        android:dividerHeight="@dimen/divider_height"
+                        android:padding="@dimen/padding_medium"
+                        android:scrollbarStyle="outsideOverlay"
+                        android:fadeScrollbars="false"
+                        android:scrollbarThumbVertical="@color/divider"
+                        android:scrollbars="vertical"
+                        android:elevation="2dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Actions Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:cardUseCompatPadding="true"
+                android:layout_marginTop="@dimen/margin_medium">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_large">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/actions"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_size_xlarge"
+                        android:textColor="@color/primary"
+                        android:layout_marginBottom="@dimen/margin_large"/>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnUnlock"
+                            android:text=""
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/button_height"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="@dimen/margin_small"
+                            app:cornerRadius="@dimen/margin_medium"
+                            android:padding="@dimen/padding_large"
+                            android:gravity="center"
+                            app:icon="@android:drawable/ic_lock_silent_mode_off"
+                            app:iconGravity="textStart"
+                            app:iconPadding="0dp"
+                            android:contentDescription="@string/unlock" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnLock"
+                            android:text=""
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/button_height"
+                            android:layout_weight="1"
+                            android:layout_marginStart="@dimen/margin_small"
+                            android:layout_marginEnd="@dimen/margin_small"
+                            app:cornerRadius="@dimen/margin_medium"
+                            android:padding="@dimen/padding_large"
+                            android:gravity="center"
+                            app:icon="@android:drawable/ic_lock_silent_mode"
+                            app:iconGravity="textStart"
+                            app:iconPadding="0dp"
+                            android:contentDescription="@string/lock" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnWakeUp"
+                            android:text=""
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/button_height"
+                            android:layout_weight="1"
+                            android:layout_marginStart="@dimen/margin_small"
+                            app:cornerRadius="@dimen/margin_medium"
+                            android:padding="@dimen/padding_large"
+                            android:gravity="center"
+                            app:icon="@android:drawable/ic_lock_power_off"
+                            app:iconGravity="textStart"
+                            app:iconPadding="0dp"
+                            android:contentDescription="@string/wake_up" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Log Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewLog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:cardUseCompatPadding="true"
+                android:layout_marginTop="@dimen/margin_medium">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_large">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/margin_large">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="@string/log"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/text_size_xlarge"
+                            android:textColor="@color/primary"/>
+
+                        <ImageButton
+                            android:id="@+id/btnToggleLog"
+                            android:layout_width="@dimen/icon_button_size"
+                            android:layout_height="@dimen/icon_button_size"
+                            android:padding="@dimen/padding_medium"
+                            android:src="@android:drawable/ic_menu_view"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="@string/toggle_log_visibility"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txtLog"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/log_height"
+                        android:background="@color/background_log"
+                        android:textColor="@color/text_white"
+                        android:padding="@dimen/padding_large"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/text_size_medium"
+                        android:scrollbars="vertical"
+                        android:fontFamily="monospace"
+                        android:text=""
+                        android:elevation="2dp"
+                        android:clipToPadding="false"
+                        android:fadeScrollbars="false"
+                        android:scrollbarStyle="outsideOverlay"
+                        android:scrollbarThumbVertical="@color/divider" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

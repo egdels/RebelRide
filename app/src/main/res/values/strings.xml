@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RebelRide</string>
+    
+    <!-- Connection Card -->
+    <string name="connection">Connection</string>
+    <string name="mac_address_hint">MAC-Address</string>
+    <string name="scan">Scan</string>
+    <string name="stop_scan">Stop Scan</string>
+    <string name="password_hint">Password</string>
+    
+    <!-- Devices Card -->
+    <string name="devices_nearby">Devices nearby</string>
+    
+    <!-- Actions Card -->
+    <string name="actions">Actions</string>
+    <string name="unlock">Unlock</string>
+    <string name="lock">Lock</string>
+    <string name="wake_up">Wake Up</string>
+    
+    <!-- Log Card -->
+    <string name="log">Log</string>
+    <string name="toggle_log_visibility">Toggle log visibility</string>
+    
+    <!-- Toast Messages -->
+    <string name="insert_mac_and_password">Insert MAC address and password</string>
+    <string name="insert_mac">Insert MAC address</string>
+    <string name="bluetooth_manager_unavailable">Bluetooth Manager not available</string>
+    <string name="bluetooth_adapter_unavailable">Bluetooth Adapter not available</string>
+    <string name="bluetooth_disabled">Bluetooth is disabled</string>
+    <string name="invalid_mac_address">Invalid MAC address</string>
+    <string name="permissions_required">Permissions required for Bluetooth scan</string>
+    
+    <!-- Log Messages -->
+    <string name="wake_up_button_disabled">Wake Up button disabled for 30 seconds</string>
+    <string name="wake_up_button_enabled">Wake Up button enabled</string>
+    <string name="performing_operation">Performing %1$s operation on %2$s…</string>
+    <string name="bluetooth_manager_not_available">Bluetooth Manager not available!</string>
+    <string name="bluetooth_adapter_not_available">Bluetooth Adapter not available!</string>
+    <string name="bluetooth_is_disabled">Bluetooth is disabled!</string>
+    <string name="invalid_mac">Invalid MAC address: %1$s</string>
+    <string name="permission_requested">Permission BLUETOOTH_CONNECT requested.</string>
+    <string name="connected_discovering_services">Connected, discovering services…</string>
+    <string name="disconnected">Disconnected.</string>
+    <string name="permission_missing">Permission BLUETOOTH_CONNECT missing!</string>
+    <string name="services_found">Services found.</string>
+    <string name="service_not_found">Service not found!</string>
+    <string name="sending_chunk_1">Sending chunk 1: %1$s</string>
+    <string name="sending_chunk_2">Sending chunk 2: \\r\\n</string>
+    <string name="notification">Notification: %1$s</string>
+    <string name="scanning_for_devices">Scanning for devices…</string>
+    <string name="scan_stopped">Scan stopped. Found %1$d devices.</string>
+    <string name="scan_failed">Scan failed with error code: %1$d</string>
+    <string name="found_device">Found device: %1$s</string>
+    <string name="selected_device">Selected device: %1$s</string>
+    <string name="all_permissions_granted">All permissions granted. Starting scan…</string>
+    <string name="some_permissions_denied">Some permissions were denied. Scanning not possible.</string>
+    <string name="requesting_permissions">Requesting required permissions: %1$s</string>
+</resources>
