@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="https://github.com/egdels/RebelRide/blob/main/app/src/main/ic_launcher-playstore.png?raw=true" alt="RebelRide Logo" width="200"/>
+</p>
 
 # RebelRide
 
