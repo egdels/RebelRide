@@ -46,10 +46,11 @@ class MainActivity : AppCompatActivity() {
     // Repository for handling Bluetooth operations
     private lateinit var bluetoothRepository: BluetoothRepository
 
-    // UUIDs for the BLE service and characteristics
-    private val SERVICE_UUID = UUID.fromString("00002c00-0000-1000-8000-00805f9b34fb")
-    private val CHAR_WRITE_UUID = UUID.fromString("00002c01-0000-1000-8000-00805f9b34fb")
-    private val CHAR_NOTIFY_UUID = UUID.fromString("00002c03-0000-1000-8000-00805f9b34fb")
+    private val scanTimeoutHandler = android.os.Handler()
+    private val scanTimeoutRunnable = Runnable {
+        stopScan()
+        toast("Scan timeout after 30 seconds")
+    }
 
     private lateinit var logView: TextView
     private lateinit var editMac: EditText
@@ -435,12 +436,11 @@ class MainActivity : AppCompatActivity() {
      * Start scanning for nearby Bluetooth devices
      */
     private fun startScan() {
-        // Check for Bluetooth scan permission
+        // Check permissions
         val bluetoothScanPermission = ActivityCompat.checkSelfPermission(
             this,
             Manifest.permission.BLUETOOTH_SCAN
         ) == PackageManager.PERMISSION_GRANTED
-        // Check for location permissions
         val fineLocationPermission = ActivityCompat.checkSelfPermission(
             this,
             Manifest.permission.ACCESS_FINE_LOCATION
@@ -450,33 +450,27 @@ class MainActivity : AppCompatActivity() {
             Manifest.permission.ACCESS_COARSE_LOCATION
         ) == PackageManager.PERMISSION_GRANTED
 
-        // Request all missing permissions
         if (!bluetoothScanPermission || !fineLocationPermission || !coarseLocationPermission) {
             val permissionsToRequest = mutableListOf<String>()
-
-            if (!bluetoothScanPermission) {
-                permissionsToRequest.add(Manifest.permission.BLUETOOTH_SCAN)
-            }
-            if (!fineLocationPermission) {
-                permissionsToRequest.add(Manifest.permission.ACCESS_FINE_LOCATION)
-            }
-            if (!coarseLocationPermission) {
-                permissionsToRequest.add(Manifest.permission.ACCESS_COARSE_LOCATION)
-            }
+            if (!bluetoothScanPermission) permissionsToRequest.add(Manifest.permission.BLUETOOTH_SCAN)
+            if (!fineLocationPermission) permissionsToRequest.add(Manifest.permission.ACCESS_FINE_LOCATION)
+            if (!coarseLocationPermission) permissionsToRequest.add(Manifest.permission.ACCESS_COARSE_LOCATION)
 
             ActivityCompat.requestPermissions(this, permissionsToRequest.toTypedArray(), PERMISSION_REQUEST_CODE_SCAN)
             viewModel.addLog("Required permissions requested: ${permissionsToRequest.joinToString(", ")}")
             return
         }
 
-        // Clear previous results
+        // Start scan
         viewModel.clearDiscoveredDevices()
         viewModel.clearLog()
         viewModel.addLog("Scanning for devices...")
         viewModel.setScanning(true)
 
-        // Start scan using the repository
         bluetoothRepository.startScan(scanCallback)
+
+        // ⏱ Stop scan after 30 seconds
+        scanTimeoutHandler.postDelayed(scanTimeoutRunnable, 30_000L)
     }
 
     /**
@@ -485,6 +479,7 @@ class MainActivity : AppCompatActivity() {
     private fun stopScan() {
         bluetoothRepository.stopScan()
         viewModel.setScanning(false)
+        scanTimeoutHandler.removeCallbacks(scanTimeoutRunnable) // ← verhindert mehrfaches Stoppen
         viewModel.addLog("Scan stopped. Found ${deviceMap.size} devices.")
     }
 
